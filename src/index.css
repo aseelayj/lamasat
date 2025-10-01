@@ -1,0 +1,297 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --primary-color: #1e293b;
+    --primary-light: #334155;
+    --accent-gold: #d4a574;
+    --accent-gold-light: #e6c299;
+    --light-bg: #f5f3f1;
+    --luxury-bg: #fafaf9;
+    --text-dark: #181A20;
+    --text-medium: #64748b;
+    --text-light: #ffffff;
+    --border-color: #f1f5f9;
+    --shadow-light: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    --shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 400;
+}
+
+body {
+    direction: rtl;
+    text-align: right;
+    background-color: var(--luxury-bg);
+    color: var(--text-dark);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    line-height: 1.7;
+}
+
+.fade-transition {
+    transition: opacity 0.8s ease-in-out;
+}
+
+.slide-enter {
+    opacity: 0;
+}
+
+.slide-enter-active {
+    opacity: 1;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.slide-exit {
+    opacity: 1;
+}
+
+.slide-exit-active {
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.header-shadow {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.scroll-smooth {
+    scroll-behavior: smooth;
+}
+
+.leaflet-container {
+    filter: grayscale(0.9) brightness(1.1) contrast(0.9);
+}
+
+/* Hide default Leaflet controls */
+.leaflet-control-zoom, .leaflet-control-attribution {
+    display: none !important;
+}
+
+.custom-zoom-controls button {
+    background: none;
+    border: none;
+    width: 36px; 
+    height: 36px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-marker {
+    width: 54px;
+    height: 54px;
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+}
+
+.marker-dot {
+    width: 12px;
+    height: 12px;
+    background: #2563eb;
+    border-radius: 50%;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.dropdown-menu {
+    transform: translateY(-10px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.dropdown-menu.show {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Hero Slider Specific Styles */
+.hero-slider-container {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.hero-slide.active {
+    opacity: 1;
+}
+
+.hero-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: var(--text-light);
+}
+
+.hero-content .subtitle {
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+.hero-content .title {
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.hero-content .description {
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+.hero-btn {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    min-width: 140px;
+}
+
+.hero-btn:hover {
+    background-color: #6d4825;
+    transform: translateY(-2px);
+}
+
+.hero-btn-secondary {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: var(--text-light);
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  min-width: 140px;
+}
+
+.hero-btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.hero-dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 3;
+}
+
+.hero-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.hero-dot.active {
+    background: var(--text-light);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-btn,
+    .hero-btn-secondary {
+        padding: 10px 16px;
+        font-size: 14px;
+        min-width: 120px;
+    }
+    
+    .hero-slider-container {
+        height: 70vh;
+        min-height: 500px;
+    }
+    
+    .custom-zoom-controls button,
+    .map-search button {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .map-all-projects-btn {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-slider-container {
+        height: 60vh;
+        min-height: 450px;
+    }
+    
+    .hero-btn,
+    .hero-btn-secondary {
+        padding: 8px 12px;
+        font-size: 13px;
+        min-width: 100px;
+        gap: 8px;
+    }
+}
