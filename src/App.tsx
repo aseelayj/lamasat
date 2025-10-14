@@ -9,6 +9,10 @@ import ContactPage from './components/ContactPage';
 import ConsultancyPage from './components/ConsultancyPage';
 import RegisterInterestPage from './components/RegisterInterestPage';
 import QuickInterestModal from './components/QuickInterestModal';
+import AdminLayout from './components/admin/AdminLayout';
+import DashboardPage from './components/admin/DashboardPage';
+import PropertiesPage from './components/admin/PropertiesPage';
+import LeadsPage from './components/admin/LeadsPage';
 
 function App() {
   const [showQuickModal, setShowQuickModal] = useState(false);
@@ -60,10 +64,15 @@ function App() {
           path="/consultancy" 
           element={<ConsultancyPage onBack={() => navigate('/')} />} 
         />
-        <Route 
-          path="/register-interest" 
-          element={<RegisterInterestPage onBack={() => navigate('/')} />} 
+        <Route
+          path="/register-interest"
+          element={<RegisterInterestPage onBack={() => navigate('/')} />}
         />
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<DashboardPage />} />
+          <Route path="properties" element={<PropertiesPage />} />
+          <Route path="leads" element={<LeadsPage />} />
+        </Route>
       </Routes>
       
       {/* Quick Interest Modal */}
